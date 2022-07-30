@@ -1,5 +1,16 @@
 const VALID_CHOICES = ['rock', 'paper', 'scissors'];
 
+function game() {
+  let winner;
+  let scores = [0, 0];
+  for (let i = 0; i < 5; i++) {
+    winner = playRound();
+    declareWinner(winner);
+    changeScores(scores, winner);
+  }
+  showScores(scores);
+}
+
 function playRound() {
   let compChoice;
   let playerChoice;
@@ -7,7 +18,7 @@ function playRound() {
   playerChoice = getPlayerChoice();
   compChoice = getCompChoice();
   winner = getWinner(playerChoice, compChoice);
-  declareWinner(winner);
+  return winner;
 }
 
 function getPlayerChoice() {
@@ -62,4 +73,16 @@ function declareWinner(winner) {
     winner = winner ? "Player" : "Computer";
     console.log(winner + " wins!");
   }
+}
+
+function changeScores(scores, winner) {
+  if (winner !== null) {
+    scores[+winner] += 1;
+  }
+}
+
+function showScores(scores) {
+  let message = "Final scores\nComputer: " + scores[0] + "\nPlayer: " + scores[1];
+  console.log(message);
+  alert(message);
 }
