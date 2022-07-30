@@ -1,6 +1,6 @@
 const VALID_CHOICES = ['rock', 'paper', 'scissors'];
 
-function start_game() {
+function playRound() {
   let compChoice;
   let playerChoice;
   let winner;
