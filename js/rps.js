@@ -4,12 +4,10 @@ function start_game() {
   let compChoice;
   let playerChoice;
   let winner;
-  while (true) {
-    playerChoice = getPlayerChoice();
-    compChoice = getCompChoice();
-    winner = getWinner(playerChoice, compChoice);
-    declareWinner(winner);
-  }
+  playerChoice = getPlayerChoice();
+  compChoice = getCompChoice();
+  winner = getWinner(playerChoice, compChoice);
+  declareWinner(winner);
 }
 
 function getPlayerChoice() {
