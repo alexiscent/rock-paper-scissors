@@ -2,14 +2,41 @@
 <html lang="en">
 
 <head>
-  <title></title>
+  <title>Rock, Paper, Scissors</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script type="text/javascript" src="js/rps.js"></script>
 </head>
 
 <body>
-  <button onclick="game()">Start</button>
+  <h1 id="header">Rock, Paper, Scissors!</h1>
+  <div id="playArea">
+    <div class="scores">
+      <div class="names">
+        <span class="player">You</span>
+        vs
+        <span class="opponent">Computer</span>
+      </div>
+      <div id="numbers">
+        <span class="player">0</span>
+        :
+        <span class="opponent">0</span>
+      </div>
+    </div>
+    <div class="choices">
+      <div class="card selected tie" id="rock">
+        <span class="player">You</span>
+        <img alt="rock" src="img/rock">
+      </div>
+      <div class="card other lose" id="paper">
+        <img alt="paper" src="img/paper">
+      </div>
+      <div class="card selected win" id="scissors">
+        <img alt="scissors" src="img/scissors">
+        <span class="opponent">Computer</span>
+      </div>
+    </div>
+  </div>
 </body>
 
 </html>
