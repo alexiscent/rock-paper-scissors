@@ -6,6 +6,10 @@ function initEvents(name) {
   document.getElementById(name).addEventListener('click', playRound);
 }
 
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 function playRound(e) {
   let playerChoice = getPlayerChoice(e);
   let computerChoice = getComputerChoice();
