@@ -127,6 +127,7 @@ body
     width: 200px;
     font-size: 20px;
     --offset: -35px;
+    transition-duration: 0.1s;
 }
 
 .card .player
