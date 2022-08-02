@@ -1,10 +1,13 @@
 const CHOICES = ['rock', 'paper', 'scissors'];
-let lock = false;
+let gLock = false;
 
 CHOICES.forEach(initEvents);
 
 function initEvents(name) {
-  document.getElementById(name).addEventListener('click', playRound);
+  let card = document.getElementById(name);
+  card.addEventListener('click', playRound);
+  card.addEventListener('mousemove', () => setSelection(name, true, gLock));
+  card.addEventListener('mouseleave', () => unsetSelection(gLock));
 }
 
 function sleep(ms) {
@@ -12,8 +15,8 @@ function sleep(ms) {
 }
 
 async function playRound(e) {
-  if (lock) return;
-  lock = true;
+  if (gLock) return;
+  gLock = true;
   let playerChoice = getPlayerChoice(e);
   let computerChoice = getComputerChoice();
   setChoice(playerChoice, true);
@@ -25,7 +28,7 @@ async function playRound(e) {
   await sleep(2000);
   unsetSelection();
   unsetChoice();
-  lock = false;
+  gLock = false;
 }
 
 function getPlayerChoice(e) {
@@ -54,7 +57,8 @@ function changeScore(playerWin) {
   score.innerText = +score.innerText + 1;
 }
 
-function setSelection(cardName, isPlayer = false) {
+function setSelection(cardName, isPlayer = false, lock = false) {
+  if (lock) return;
   const card = document.getElementById(cardName);
   card.classList.remove('other');
   card.classList.add('selected');
@@ -85,7 +89,8 @@ function setRelation(cardName, mainCardName) {
   }
 }
 
-function unsetSelection() {
+function unsetSelection(lock = false) {
+  if (lock) return;
   const SELECTION_CLASSES = ['selected', 'other', 'tie', 'win', 'lose'];
   CHOICES.forEach((name) => document.getElementById(name).classList.remove(...SELECTION_CLASSES));
 }
