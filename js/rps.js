@@ -34,24 +34,18 @@ function getComputerChoice() {
   return choice;
 }
 
-function doesPlayerWin(player, opponent) {
+function doesPlayerWin(playerChoice, opponentChoice) {
   // return null on draw
-  if (player === opponent) {
-    return null;
-  }
+  if (playerChoice === opponentChoice) return null;
   // win on positive odd or negative even
-  let result = CHOICES.indexOf(player) - CHOICES.indexOf(opponent);
-  if (result < 0) {
-    result++;
-  }
+  let result = CHOICES.indexOf(playerChoice) - CHOICES.indexOf(opponentChoice);
+  if (result < 0) result++;
   result = Math.abs(result % 2) === 1;
   return result;
 }
 
 function changeScore(playerWin) {
-  if (playerWin === null) {
-    return;
-  }
+  if (playerWin === null) return;
   let score = document.querySelector(`.${playerWin ? 'player' : 'opponent'} .score`);
   score.innerText = +score.innerText + 1;
 }
