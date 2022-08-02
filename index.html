@@ -9,31 +9,36 @@
 </head>
 
 <body>
-  <h1 id="header">Rock, Paper, Scissors!</h1>
+  <h1 id="title">Rock, Paper, Scissors!</h1>
   <div id="playArea">
-    <div class="scores">
-      <div class="names">
-        <span class="player">You</span>
-        vs
-        <span class="opponent">Computer</span>
+    <div class="results">
+      <div class="player">
+        <div class="player name">You</div>
+        <div class="player score">0</div>
       </div>
-      <div id="numbers">
-        <span class="player">0</span>
-        :
-        <span class="opponent">0</span>
+      <div class="separator">
+        <div class="separator name">vs</div>
+        <div class="separator score">:</div>
+      </div>
+      <div class="opponent">
+        <div class="opponent name">Computer</div>
+        <div class="opponent score">0</div>
       </div>
     </div>
     <div class="choices">
       <div class="card selected tie" id="rock">
-        <span class="player">You</span>
         <img alt="rock" src="img/rock">
+        <div class="player name">You</div>
+        <div class="name">Rock</div>
       </div>
       <div class="card other lose" id="paper">
         <img alt="paper" src="img/paper">
+        <div class="name">Paper</div>
       </div>
       <div class="card selected win" id="scissors">
         <img alt="scissors" src="img/scissors">
-        <span class="opponent">Computer</span>
+        <div class="name">Scissors</div>
+        <div class="opponent name">Computer</div>
       </div>
     </div>
   </div>
