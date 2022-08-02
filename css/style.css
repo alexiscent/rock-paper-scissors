@@ -1,0 +1,178 @@
+/* Colours */
+#defaultTheme
+{
+    --bg-clr: #222831;
+    --txt-clr: #EEEEEE;
+    --bg-accent: #393E46;
+    --border-clr: #FD7014;
+    --player-clr: deepskyblue;
+    --opponent-clr: crimson;
+    --bg-selected: #2D4263;
+    --tie-clr: #FFD369;
+    --win-clr: limegreen;
+    --lose-clr: firebrick;
+}
+
+
+/* General */
+*
+{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body
+{
+    min-height: 100vh;
+    padding-top: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    color: var(--txt-clr);
+    background-color: var(--bg-clr);
+}
+
+#title
+{
+    text-align: center;
+    font-size: 40px;
+}
+
+#playArea
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    flex: 1;
+}
+
+
+/* Names */
+.name
+{
+    font-weight: bold;
+}
+
+.player.name
+{
+    color: var(--player-clr);
+}
+
+.opponent.name
+{
+    color: var(--opponent-clr);
+}
+
+
+/* Scores */
+.results
+{
+    display: flex;
+    justify-content: center;
+    position: relative;
+    font-size: 30px;
+}
+
+.results > *
+{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: absolute;
+}
+
+.results > .player
+{
+    align-items: flex-end;
+    right: 50px;
+}
+
+.results > .opponent
+{
+    align-items: flex-start;
+    left: 50px;
+}
+
+.results > .separator
+{
+    align-items: center;
+}
+.separator.name
+{
+    font-style: italic;
+    font-weight: normal;
+}
+
+
+/* Choices */
+.choices
+{
+    display: flex;
+    gap: 45px;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 15px 0 5px;
+    border: 2px solid var(--border-clr);
+    border-radius: 8px;
+    background-color: var(--bg-accent);
+    position: relative;
+    width: 200px;
+    font-size: 20px;
+    --offset: -35px;
+}
+
+.card .player
+{
+    position: absolute;
+    top: var(--offset);
+
+}
+
+.card .opponent
+{
+    position: absolute;
+    bottom: var(--offset);
+}
+
+.card img {
+    max-width: 80%;
+}
+
+
+/* Selection */
+.card.selected
+{
+    background-color: var(--bg-selected);
+    scale: 1.05;
+}
+
+.card.other
+{
+    opacity: 0.7;
+}
+
+.card.tie
+{
+    border-color: var(--tie-clr);
+    box-shadow: 0 0 10px 0 var(--tie-clr);
+}
+
+.card.win
+{
+    border-color: var(--win-clr);
+    box-shadow: 0 0 10px 0 var(--win-clr);
+}
+
+.card.lose
+{
+    border-color: var(--lose-clr);
+    box-shadow: 0 0 10px 0 var(--lose-clr);
+}
