@@ -1,4 +1,5 @@
 const CHOICES = ['rock', 'paper', 'scissors'];
+let lock = false;
 
 CHOICES.forEach(initEvents);
 
@@ -11,6 +12,8 @@ function sleep(ms) {
 }
 
 async function playRound(e) {
+  if (lock) return;
+  lock = true;
   let playerChoice = getPlayerChoice(e);
   let computerChoice = getComputerChoice();
   setChoice(playerChoice, true);
@@ -22,6 +25,7 @@ async function playRound(e) {
   await sleep(2000);
   unsetSelection();
   unsetChoice();
+  lock = false;
 }
 
 function getPlayerChoice(e) {
