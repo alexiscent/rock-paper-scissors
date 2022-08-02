@@ -6,7 +6,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="css/style.css">
-  <script type="text/javascript" src="js/rps.js"></script>
+  <script src="js/rps.js" defer></script>
 </head>
 
 <body id="defaultTheme">
@@ -27,19 +27,17 @@
       </div>
     </div>
     <div class="choices">
-      <div class="card selected tie" id="rock">
-        <div class="player name">You</div>
+      <div class="card" id="rock">
         <img alt="rock" src="img/rock.svg">
         <div class="name">Rock</div>
       </div>
-      <div class="card other lose" id="paper">
+      <div class="card" id="paper">
         <img alt="paper" src="img/paper.svg">
         <div class="name">Paper</div>
       </div>
-      <div class="card selected win" id="scissors">
+      <div class="card" id="scissors">
         <img alt="scissors" src="img/scissors.svg">
         <div class="name">Scissors</div>
-        <div class="opponent name">Computer</div>
       </div>
     </div>
   </div>
