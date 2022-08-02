@@ -73,6 +73,7 @@ body
     justify-content: center;
     position: relative;
     font-size: 30px;
+    --offset: 70px;
 }
 
 .results > *
@@ -80,22 +81,23 @@ body
     display: flex;
     flex-direction: column;
     gap: 10px;
+}
+
+.results .player
+{
     position: absolute;
-}
-
-.results > .player
-{
     align-items: flex-end;
-    right: 50px;
+    right: var(--offset);
 }
 
-.results > .opponent
+.results .opponent
 {
+    position: absolute;
     align-items: flex-start;
-    left: 50px;
+    left: var(--offset);
 }
 
-.results > .separator
+.results .separator
 {
     align-items: center;
 }
