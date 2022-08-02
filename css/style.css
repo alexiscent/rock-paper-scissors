@@ -55,12 +55,12 @@ body
     font-weight: bold;
 }
 
-.player.name
+.player .name
 {
     color: var(--player-clr);
 }
 
-.opponent.name
+.opponent .name
 {
     color: var(--opponent-clr);
 }
@@ -99,7 +99,7 @@ body
 {
     align-items: center;
 }
-.separator.name
+.separator .name
 {
     font-style: italic;
     font-weight: normal;

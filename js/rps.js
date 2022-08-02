@@ -41,7 +41,7 @@ function changeScore(playerWin) {
   if (playerWin === null) {
     return;
   }
-  let score = document.querySelector(`.${playerWin ? 'player' : 'opponent'}.score`);
+  let score = document.querySelector(`.${playerWin ? 'player' : 'opponent'} .score`);
   score.innerText = +score.innerText + 1;
 }
 
