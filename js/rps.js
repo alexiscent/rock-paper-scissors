@@ -25,7 +25,7 @@ async function playRound(e) {
   setChoice(computerChoice);
   let winner = doesPlayerWin(playerChoice, computerChoice);
   changeScore(winner);
-  await sleep(2000);
+  await declareWinner();
   unsetSelection();
   unsetChoice();
   gLock = false;
@@ -116,4 +116,22 @@ function unsetChoice() {
   if (player) player.remove();
   const opponent = document.querySelector('.card .opponent');
   if (opponent) opponent.remove();
+}
+
+async function declareWinner(waitTime = 2000) {
+  const playerScore = document.querySelector('.player .score');
+  const opponentScore = document.querySelector('.opponent .score');
+  const announcement = document.getElementById('announcement');
+  if (playerScore.innerText >= 5 || opponentScore.innerText >= 5) {
+    const isPlayer = playerScore.innerText >= opponentScore.innerText;
+    const name = document.querySelector('#announcement .name');
+    name.innerText = isPlayer ? 'Player' : 'Computer';
+    announcement.classList.add(isPlayer ? 'player' : 'opponent');
+    announcement.classList.remove('hide');
+    playerScore.innerText = 0;
+    opponentScore.innerText = 0;
+    waitTime += 1000;
+  }
+  await sleep(waitTime);
+  announcement.classList.add('hide');
 }

@@ -48,6 +48,26 @@ body
     flex: 1;
 }
 
+#announcement
+{
+    position: absolute;
+    font-size: 82px;
+    width: 100%;
+    height: 100%;
+    background-color: #222831;
+    transition-duration: 1.0s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+#announcement.hide
+{
+    opacity: 0;
+    z-index: -50;
+}
+
 
 /* Names */
 .name
