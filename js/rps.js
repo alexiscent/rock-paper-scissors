@@ -3,7 +3,19 @@ const LIZARD_SPOCK = ['rock', 'paper', 'scissors', 'lizard', 'spock'];
 let choices;
 let gLock = false;
 
-initGame(LIZARD_SPOCK);
+initGame(CLASSIC);
+document.getElementById('mode').addEventListener('click', changeMode);
+
+function changeMode() {
+  const modeElement = document.getElementById('mode');
+  if (choices === CLASSIC) {
+    initGame(LIZARD_SPOCK);
+    modeElement.innerText = 'Classic?';
+  } else {
+    initGame(CLASSIC);
+    modeElement.innerText = '...lizard, spock?';
+  }
+}
 
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));

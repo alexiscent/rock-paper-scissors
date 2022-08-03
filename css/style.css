@@ -28,7 +28,6 @@ body
     padding-top: 25px;
     display: flex;
     flex-direction: column;
-    gap: 50px;
     color: var(--txt-clr);
     background-color: var(--bg-clr);
 }
@@ -68,6 +67,12 @@ body
 {
     opacity: 0;
     z-index: -50;
+}
+
+#mode
+{
+    align-self: flex-end;
+    padding-right: 10px;
 }
 
 
