@@ -1,17 +1,66 @@
-const CHOICES = ['rock', 'paper', 'scissors'];
+const CLASSIC = ['rock', 'paper', 'scissors'];
+const LIZARD_SPOCK = ['rock', 'paper', 'scissors', 'lizard', 'spock'];
+let choices;
 let gLock = false;
 
-CHOICES.forEach(initEvents);
+initGame(CLASSIC);
+document.getElementById('mode').addEventListener('click', changeMode);
 
-function initEvents(name) {
-  let card = document.getElementById(name);
-  card.addEventListener('click', playRound);
-  card.addEventListener('mousemove', () => setSelection(name, true, gLock));
-  card.addEventListener('mouseleave', () => unsetSelection(gLock));
+function changeMode() {
+  const modeElement = document.getElementById('mode');
+  if (choices === CLASSIC) {
+    initGame(LIZARD_SPOCK);
+    modeElement.innerText = 'Classic?';
+  } else {
+    initGame(CLASSIC);
+    modeElement.innerText = '...lizard, spock?';
+  }
 }
 
 function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+function initGame(mode) {
+  fillArea(mode);
+  addEvents(mode);
+}
+
+function fillArea(mode) {
+  choices = mode;
+  const playField = document.getElementById('choices');
+  const cards = [];
+  for (let i = 0; i < choices.length; i++) {
+    cards.push(createCard(choices[i]));
+  }
+  playField.replaceChildren(...cards);
+}
+
+function createCard(cardName) {
+  const card = document.createElement('div');
+  card.classList.add('card');
+  card.id = cardName;
+  const image = document.createElement('img');
+  image.alt = cardName;
+  image.src = `img/${cardName}.svg`;
+  const name = document.createElement('div');
+  name.classList.add('name');
+  name.innerText = capitalise(cardName);
+  card.replaceChildren(image, name);
+  return card;
+}
+
+function capitalise(str) {
+  return str.substring(0, 1).toUpperCase() + str.substring(1);
+}
+
+function addEvents(mode) {
+  for (let i = 0; i < mode.length; i++) {
+    let card = document.getElementById(mode[i]);
+    card.addEventListener('click', playRound);
+    card.addEventListener('mousemove', () => setSelection(mode[i], true, gLock));
+    card.addEventListener('mouseleave', () => unsetSelection(gLock));
+  }
 }
 
 async function playRound(e) {
@@ -36,8 +85,8 @@ function getPlayerChoice(e) {
 }
 
 function getComputerChoice() {
-  let choice = Math.floor(Math.random() * CHOICES.length);
-  choice = CHOICES[choice];
+  let choice = Math.floor(Math.random() * choices.length);
+  choice = choices[choice];
   return choice;
 }
 
@@ -45,7 +94,7 @@ function doesPlayerWin(playerChoice, opponentChoice) {
   // return null on draw
   if (playerChoice === opponentChoice) return null;
   // win on positive odd or negative even
-  let result = CHOICES.indexOf(playerChoice) - CHOICES.indexOf(opponentChoice);
+  let result = choices.indexOf(playerChoice) - choices.indexOf(opponentChoice);
   if (result < 0) result++;
   result = Math.abs(result % 2) === 1;
   return result;
@@ -63,9 +112,9 @@ function setSelection(cardName, isPlayer = false, lock = false) {
   card.classList.remove('other');
   card.classList.add('selected');
   if (isPlayer) {
-    for (let i = 0; i < CHOICES.length; i++) {
-      setOther(CHOICES[i]);
-      setRelation(CHOICES[i], cardName);
+    for (let i = 0; i < choices.length; i++) {
+      setOther(choices[i]);
+      setRelation(choices[i], cardName);
     }
   }
 }
@@ -92,7 +141,7 @@ function setRelation(cardName, mainCardName) {
 function unsetSelection(lock = false) {
   if (lock) return;
   const SELECTION_CLASSES = ['selected', 'other', 'tie', 'win', 'lose'];
-  CHOICES.forEach((name) => document.getElementById(name).classList.remove(...SELECTION_CLASSES));
+  choices.forEach((name) => document.getElementById(name).classList.remove(...SELECTION_CLASSES));
 }
 
 function setChoice(cardName, isPlayer = false) {
