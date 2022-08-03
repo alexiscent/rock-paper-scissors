@@ -87,7 +87,7 @@ body
 
 
 /* Scores */
-.results
+#results
 {
     display: flex;
     justify-content: center;
@@ -96,28 +96,28 @@ body
     --offset: 70px;
 }
 
-.results > *
+#results > *
 {
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
 
-.results .player
+#results .player
 {
     position: absolute;
     align-items: flex-end;
     right: var(--offset);
 }
 
-.results .opponent
+#results .opponent
 {
     position: absolute;
     align-items: flex-start;
     left: var(--offset);
 }
 
-.results .separator
+#results .separator
 {
     align-items: center;
 }
@@ -129,7 +129,7 @@ body
 
 
 /* Choices */
-.choices
+#choices
 {
     display: flex;
     gap: 45px;
