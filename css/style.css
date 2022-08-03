@@ -46,6 +46,8 @@ body
     align-items: center;
     justify-content: space-around;
     flex: 1;
+    gap: 30px;
+    padding: 20px;
 }
 
 #announcement
@@ -133,6 +135,8 @@ body
 {
     display: flex;
     gap: 45px;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .card {
