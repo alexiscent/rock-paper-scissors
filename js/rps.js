@@ -126,6 +126,7 @@ async function declareWinner(waitTime = 2000) {
     const isPlayer = playerScore.innerText >= opponentScore.innerText;
     const name = document.querySelector('#announcement .name');
     name.innerText = isPlayer ? 'Player' : 'Computer';
+    announcement.classList.remove('player', 'opponent');
     announcement.classList.add(isPlayer ? 'player' : 'opponent');
     announcement.classList.remove('hide');
     playerScore.innerText = 0;
